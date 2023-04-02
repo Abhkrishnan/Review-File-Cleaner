@@ -18,12 +18,14 @@ for csv_file in csv_files:
     csv_file.split('\\')[-1]
 
     df = basic_cleaning(df)
+    #Saving all the cleaned files
     df.to_csv('./Cleaned_Test/CLEANED__{}'.format(csv_file.split('\\')[-1]),index=False)
 
 
 path = os.getcwd()+"\\Cleaned_Test"
 csv_files = glob.glob(os.path.join(path, "*.csv"))
 
+#File Combiner : To combine all the Cleaned File
 file_names = []
 for filename in csv_files:
     df = pd.read_csv(filename, index_col=None, header=0)
